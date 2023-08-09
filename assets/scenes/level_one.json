@@ -1,0 +1,35 @@
+
+[
+    {
+        "id": 1,
+        "title": "A field of poppies",
+        "full_description": "You are in a field of poppies. The smell of the poppies is intoxicating.",
+        "paths": [
+            {
+                "goes_to": 2,
+                "direction_description": "to the North",
+                "direction_strict": "north",
+                "description": "You see a house."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "A house",
+        "full_description": "You are standing outside of a small cottage.",
+        "paths": [
+            {
+                "goes_to": 1,
+                "direction_description": "to the South",
+                "direction_strict": "south",
+                "description": "You see a field of poppies."
+            },
+            {
+                "goes_to": 3,
+                "direction_description": "up on the porch",
+                "direction_strict": "to_door",
+                "description": "There is a door that is slightly ajar"
+            }
+        ]
+    }
+]
