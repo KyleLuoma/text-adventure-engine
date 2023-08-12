@@ -11,6 +11,9 @@
                 "direction_strict": "north",
                 "description": "You see a house."
             }
+        ],
+        "items":[
+
         ]
     },
     {
@@ -28,7 +31,13 @@
                 "goes_to": 3,
                 "direction_description": "up on the porch",
                 "direction_strict": "to_door",
-                "description": "There is a door that is slightly ajar"
+                "description": "There is a door that is slightly ajar."
+            }
+        ],
+        "items": [
+            {
+                "item_type_id": 1,
+                "location": "lying on the stairs"
             }
         ]
     }

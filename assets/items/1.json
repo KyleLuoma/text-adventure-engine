@@ -1,0 +1,10 @@
+{
+    "type_id": 1,
+    "name": "newspaper",
+    "description": "It's a newspaper dated two months ago. It looks like it has been sitting for a long time. The headline suggests the possibility of a prolonged drought.",
+    "size": 1,
+    "weight": 1,
+    "actions": {
+        
+    }
+}
