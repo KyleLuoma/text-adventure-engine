@@ -26,7 +26,7 @@ def gameloop(
     user_input = input(">")
     valid_commands = current_scene.get_valid_commands()
     valid_commands += (", " + ", ".join(player.player_commands))
-    valid_commands += (", " + ", ".join(player.get_inventory_drop_commands()))
+    valid_commands += (", " + ", ".join(player.get_inventory_interaction_commands()))
     translated_input = translator.translate(
         user_input,
         valid_commands,
@@ -76,9 +76,26 @@ def handle_interaction_commands(
                     del current_scene.items[item.id]
         else:
             print("That item is not here.")
+
     if input_list[0] == 'drop' and len(input_list) > 1:
         dropped_items = player.drop_item_by_name(input_list[1])
         current_scene.add_items_to_scene(dropped_items)
+        
+    if input_list[0] == 'look' and len(input_list) > 1:
+        inventory_items = player.get_inventory_item_by_name(input_list[1])
+        scene_items = current_scene.get_items_by_name(input_list[1])
+        for item in inventory_items:
+            print("You look at the {name} you are holding.".format(
+                name = item.name
+                ))
+            print(item.description)
+        for item in scene_items:
+            print("You look at the {name} {location}.".format(
+                name = item.name, 
+                location = item.location
+            ))
+            print(item.description)
+
 
 
 

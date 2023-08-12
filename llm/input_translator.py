@@ -50,7 +50,7 @@ class GPTInputTranslator(InputTranslator):
             valid_commands,
             scene_description
             ) -> str:
-        prompt_file = open("./assets/prompts/fewshot_translate_user_input.txt")
+        prompt_file = open("./assets/prompts/zeroshot_translate_user_input.txt")
         prompt = prompt_file.read()
         prompt_file.close()
         prompt = prompt.replace("__USER_INPUT__", input_string)

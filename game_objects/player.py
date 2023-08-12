@@ -4,7 +4,7 @@ class Player:
     from .item import Item
 
     interaction_commands = [
-        'get', 'drop'
+        'get', 'drop', 'look'
     ]
 
     player_commands = [
@@ -47,10 +47,19 @@ class Player:
             capacity = self.inventory_capacity
             ))
         
-    def get_inventory_drop_commands(self) -> list:
-        drop_commands = []
+    def get_inventory_interaction_commands(self) -> list:
+        interaction_types = ['drop', 'look']
+        interaction_commands = []
+        for type in interaction_types:
+            for item in self.inventory:
+                interaction_commands.append(
+                    type + " " + item.name
+                )
+        return interaction_commands
+    
+    def get_inventory_item_by_name(self, item_name) -> list:
+        item_list = []
         for item in self.inventory:
-            drop_commands.append(
-                "drop " + item.name
-            )
-        return drop_commands
+            if item_name == item.name:
+                item_list.append(item)
+        return item_list

@@ -1,0 +1,15 @@
+Translate the input from a player playing a text adventure game.
+Players can type any text they like. 
+I need you to choose the correct command from this
+list of commands based on the user input. 
+The input from the user does not have to match the commands in the list exactly. 
+Synonyms are acceptable. 
+Do your best to choose the best command based on user input.
+
+Scene description: __SCENE_DESCRIPTION__
+
+The list of valid commands are as follows:
+__VALID_COMMANDS__
+
+user input: __USER_INPUT__
+output:

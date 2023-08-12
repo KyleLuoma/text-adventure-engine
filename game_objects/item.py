@@ -23,3 +23,6 @@ class Item:
     
     def update_location(self, location) -> None:
         self.location = location
+
+    def get_name(self):
+        return self.name
