@@ -5,7 +5,7 @@ import json
 class Navigator:
 
     movement_commands = [
-        "north", "south", "east", "west", "up", "down", "to_door"
+        "north", "south", "east", "west", "up", "down", "to"
     ]
 
     def __init__(self) -> None:

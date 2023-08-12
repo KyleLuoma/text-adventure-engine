@@ -6,24 +6,24 @@ The list of valid commands are as follows:
 north west up open close to_door
 
 user input: go to the north
-output: north
+output: north,
 
 Translate the input from a player playing a text adventure game. 
 Players can type any text they like. I need you to choose the correct command from this 
 list of commands based on the user input.
 
 The list of valid commands are as follows:
-down left right back to_door
+down, left, right, back, to_door
 
 user input: go to the door in front of me
-output: to_door
+output: to door
 
 Translate the input from a player playing a text adventure game. 
 Players can type any text they like. I need you to choose the correct command from this 
 list of commands based on the user input.
 
 The list of valid commands are as follows:
-north east open close to_door
+north, east, open, close, to door
 
 user input: walk east toward the city
 output: east

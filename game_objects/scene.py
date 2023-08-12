@@ -17,25 +17,19 @@ class Scene:
     def __str__(self) -> str:
         return self.title
     
-    def _process_items(self, scene_dict) -> dict:
+    def _process_items(self, scene_dict) -> Item:
         processed_items = {}
         if 'items' in scene_dict.keys():
             scene_items = scene_dict['items']
         else:
             return {}
         for scene_item in scene_items:
-            item_dict = scene_item
-            item_file = open(
-                "./assets/items/{}.json".format(item_dict['item_type_id'])
-                )
-            item_json = self.json.loads(item_file.read())
-            item_file.close()
-            for k in item_json.keys():
-                item_dict[k] = item_json[k]
-            processed_items[scene_item['item_type_id']] = item_dict
+            item = self.Item(scene_item['item_type_id'])
+            if 'location' in scene_item.keys():
+                item.update_location(scene_item['location'])
+            processed_items[item.id] = item
         return processed_items
 
-    
     def describe(self) -> str:
         description_string = self.title + ":\n"
         description_string += self.full_description + "\n"
@@ -44,13 +38,27 @@ class Scene:
             description_string += path['description'] + " "
         for k in self.items.keys():
             description_string += "There is a "
-            description_string += self.items[k]['name'] + " "
-            description_string += self.items[k]['location'] + "."
+            description_string += self.items[k].name + " "
+            description_string += self.items[k].location + "."
         return description_string
     
     def get_valid_commands(self) -> str:
         valid_commands = []
         for path in self.paths:
             valid_commands.append(path['direction_strict'])
-        return " ".join(valid_commands)
+        if len(self.items) > 0:
+            for k in self.items.keys():
+                valid_commands.append("get " + self.items[k].name)
+        return ", ".join(valid_commands)
+    
+    def get_items_by_name(self, item_name) -> list:
+        item_list = []
+        for k in self.items.keys():
+            if self.items[k].name == item_name:
+                item_list.append(self.items[k])
+        return item_list
+    
+    def add_items_to_scene(self, item_list) -> None:
+        for item in item_list:
+            self.items[item.id] = item
     

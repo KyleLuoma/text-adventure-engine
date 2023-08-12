@@ -30,7 +30,7 @@
             {
                 "goes_to": 3,
                 "direction_description": "up on the porch",
-                "direction_strict": "to_door",
+                "direction_strict": "to porch",
                 "description": "There is a door that is slightly ajar."
             }
         ],
@@ -39,6 +39,22 @@
                 "item_type_id": 1,
                 "location": "on the stairs"
             }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "The front porch of the cottage",
+        "full_description": "You are standing on the porch of the small cottage. You can see a faint glow through the crack in the door. You detect a faint smell of garlic",
+        "paths": [
+            {
+                "goes_to": 2,
+                "direction_description": "down the stairs",
+                "direction_strict": "down stairs",
+                "description": "you see a small yard immediately in front of the cottage."
+            }
+        ],
+        "items": [
+
         ]
     }
 ]
