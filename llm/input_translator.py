@@ -16,8 +16,18 @@ class GPTInputTranslator(InputTranslator):
         self.openai_info = self._load_openai_info()
         super().__init__()
 
-    def translate(self, input_string) -> str:
-        prompt = self._get_prompt(input_string)
+    def translate(
+            self, 
+            input_string, 
+            valid_commands,
+            scene_description
+            ) -> str:
+        prompt = self._get_prompt(
+            input_string,
+            valid_commands,
+            scene_description
+            )
+        print(prompt)
         response = self.openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
@@ -34,11 +44,18 @@ class GPTInputTranslator(InputTranslator):
         )
         return response.choices[0]['message']['content'].strip()
     
-    def _get_prompt(self, input_string) -> str:
+    def _get_prompt(
+            self, 
+            input_string, 
+            valid_commands,
+            scene_description
+            ) -> str:
         prompt_file = open("./assets/prompts/fewshot_translate_user_input.txt")
         prompt = prompt_file.read()
         prompt_file.close()
         prompt = prompt.replace("__USER_INPUT__", input_string)
+        prompt = prompt.replace("__VALID_COMMANDS__", valid_commands)
+        prompt = prompt.replace("__SCENE_DESCRIPTION__", scene_description)
         return prompt
     
     def _load_openai_info(self) -> dict:

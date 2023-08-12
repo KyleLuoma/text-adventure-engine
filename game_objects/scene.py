@@ -21,3 +21,9 @@ class Scene:
             description_string += path['direction_description'] + " "
             description_string += path['description'] + " "
         return description_string
+    
+    def get_valid_commands(self) -> str:
+        valid_commands = []
+        for path in self.paths:
+            valid_commands.append(path['direction_strict'])
+        return " ".join(valid_commands)

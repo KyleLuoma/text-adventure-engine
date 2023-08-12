@@ -12,7 +12,14 @@ def main():
     while not exit:
         print(nav.get_scene(player.current_scene_id).describe())
         user_input = input(">")
-        translated_input = translator.translate(user_input)
+        valid_commands = nav.get_scene(
+            player.current_scene_id
+            ).get_valid_commands()
+        translated_input = translator.translate(
+            user_input,
+            valid_commands,
+            nav.get_scene(player.current_scene_id).describe()
+            )
         print(translated_input)
         if translated_input in nav.movement_commands:
             player.current_scene_id = nav.get_scene(

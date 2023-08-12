@@ -1,43 +1,41 @@
 Translate the input from a player playing a text adventure game. 
-Players can type any text they like. But the game requires specific keywords
-in order to work correctly. I need you to choose the correct command from this 
-list of commands. If the command is invalid, return "I don't understand that."
+Players can type any text they like. I need you to choose the correct command from this 
+list of commands based on the user input.
 
-The list of commands are as follows:
-north south east west up down left right back forward open close to_door
+The list of valid commands are as follows:
+north west up open close to_door
 
 user input: go to the north
 output: north
 
 Translate the input from a player playing a text adventure game. 
-Players can type any text they like. But the game requires specific keywords
-in order to work correctly. I need you to choose the correct command from this 
-list of commands. If the command is invalid, return "I don't understand that."
+Players can type any text they like. I need you to choose the correct command from this 
+list of commands based on the user input.
 
-The list of commands are as follows:
-north south east west up down left right back forward open close to_door
+The list of valid commands are as follows:
+down left right back to_door
 
 user input: go to the door in front of me
 output: to_door
 
 Translate the input from a player playing a text adventure game. 
-Players can type any text they like. But the game requires specific keywords
-in order to work correctly. I need you to choose the correct command from this 
-list of commands. If the command is invalid, return "I don't understand that."
+Players can type any text they like. I need you to choose the correct command from this 
+list of commands based on the user input.
 
-The list of commands are as follows:
-north south east west up down left right back forward open close to_door
+The list of valid commands are as follows:
+north east open close to_door
 
 user input: walk east toward the city
 output: east
 
 Translate the input from a player playing a text adventure game. 
-Players can type any text they like. But the game requires specific keywords
-in order to work correctly. I need you to choose the correct command from this 
-list of commands. If the command is invalid, return "I don't understand that."
+Players can type any text they like. I need you to choose the correct command from this 
+list of commands based on the user input.
 
-The list of commands are as follows:
-north south east west up down left right back forward open close to_door
+Scene description: __SCENE_DESCRIPTION__
+
+The list of valid commands are as follows:
+__VALID_COMMANDS__
 
 user input: __USER_INPUT__
 output:
