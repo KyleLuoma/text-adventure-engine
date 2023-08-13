@@ -18,6 +18,8 @@ def main():
     db_connection = database.db_connector.db_connector.sqlite_connector("./assets/game_db/game.sqlite")
     nav = Navigator()
     player = Player()
+    if debug:
+        player.current_scene_id = 3
     translator = GPTInputTranslator()
     narrator = GameNarratorAWS()
     narration = "Welcome to the Text Adventure Engine\n\n"
@@ -33,6 +35,7 @@ def gameloop(
         translator: GPTInputTranslator,
         narrator: GameNarratorAWS
 ) -> bool:
+    
     exit = False
     current_scene = nav.get_scene(player.current_scene_id)
     user_input = input("{}-> ".format(current_scene.title))
@@ -42,7 +45,6 @@ def gameloop(
     scene_commands = current_scene.get_valid_commands()
     player_commands = player.get_valid_commands()
     valid_commands = scene_commands + player_commands
-
     if debug:
         print("Valid commands:" + valid_commands)
 
@@ -61,7 +63,7 @@ def gameloop(
         translated_input in valid_commands 
         and input_list[0] in nav.movement_commands
         ):
-        player.current_scene_id = current_scene.path_lookup[translated_input]['goes_to']
+        player.current_scene_id = current_scene.paths[translated_input].goes_to
         current_scene = nav.get_scene(player.current_scene_id)
         speech_print(current_scene.describe(), narrator, speech)
 

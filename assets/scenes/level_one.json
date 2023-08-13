@@ -89,13 +89,44 @@
     {
         "id": 3,
         "title": "The front porch of the cottage",
-        "full_description": "You are standing on the porch of the small cottage. The cottage door is <F door>state</F>. You detect a faint smell of garlic coming from inside.",
+        "full_description": "You are standing on the porch of the small cottage. The cottage door is <F door>state</F>. There is a window that seems to be <F window>state</F>. You detect a faint smell of garlic coming from inside.",
         "paths": [
             {
                 "goes_to": 2,
                 "direction_description": "down the stairs",
                 "direction_strict": "down stairs",
                 "description": "you see a small yard immediately in front of the cottage."
+            },
+            {
+                "goes_to": 4,
+                "direction_description": "through the door",
+                "direction_strict": "through door",
+                "description": "You see a small cozy interior.",
+                "requirements": [
+                    {
+                        "type": "passable",
+                        "fixture": "door",
+                        "state": "open"
+                    }
+                ]
+            },
+            {
+                "goes_to": 4,
+                "direction_description": "It looks like the window is open just enough.",
+                "direction_strict": "through window",
+                "description": "you can just barely squeeze through.",
+                "requirements": [
+                    {
+                        "type": "visible",
+                        "fixture": "window",
+                        "state": "stuck open"
+                    },
+                    {
+                        "type": "passable",
+                        "fixture": "window",
+                        "state": "stuck open"
+                    }
+                ]
             }
         ],
         "items": [],
@@ -124,6 +155,31 @@
                             "ajar": "You gently pull the half-open door closed."
                         },
                         "new_state": "closed"
+                    }
+                ]
+            },
+            {
+                "title": "window",
+                "states": [
+                    "stuck open", "stuck closed"
+                ],
+                "state": "stuck closed",
+                "interactions": [
+                    {
+                        "action": "open",
+                        "descriptions": {
+                            "stuck open": "The window is already open and it's staying that way.",
+                            "stuck closed": "You force open the window creating a barely passable gap."
+                        },
+                        "new_state": "stuck open"
+                    },
+                    {
+                        "action": "close",
+                        "descriptions": {
+                            "stuck open": "Now that you've opened the window, it appears to be stuck in the open position.",
+                            "stuck closed": "The window is already closed."
+                        },
+                        "new_state": "stuck open"
                     }
                 ]
             }
