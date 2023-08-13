@@ -36,7 +36,7 @@ class GPTInputTranslator(InputTranslator):
                     "content": prompt}
             ],
             temperature=1,
-            max_tokens=16,
+            max_tokens=128,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0,

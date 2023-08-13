@@ -6,7 +6,7 @@ from llm.input_translator import *
 from text_to_speech.game_narrator import GameNarratorAWS
 
 debug = False
-speech = True
+speech = False
 
 def speech_print(text: str, narrator: GameNarratorAWS, speech = True) -> None:
     print(text)
@@ -98,7 +98,8 @@ def gameloop(
     
     else:
         speech_print(
-            "I don't understand that command.",
+            # "I don't understand that command.",
+            translated_input,
             narrator,
             speech
             )
