@@ -1,4 +1,6 @@
 /venv/
 .local/
+.tmp/
 */__pycache__/
 *.pyc
+*.exe

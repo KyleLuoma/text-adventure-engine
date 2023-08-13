@@ -19,15 +19,25 @@ class Player:
         self.inventory = []
         self.inventory_capacity = inventory_capacity
         self.current_scene_id = current_scene_id
+        self.inventory_type = "bag"
 
-    def add_to_inventory(self, item) -> bool:
+    def add_to_inventory(self, item) -> dict:
+        ret_dict = {
+            'added': False,
+            'message': ''
+        }
         if len(self.inventory) < self.inventory_capacity:
             self.inventory.append(item)
             item.update_location("in your inventory")
-            return True
+            ret_dict['message'] = "You pick up the {item_name} and place it in your {inv_type}".format(
+                    item_name = item.name,
+                    inv_type = self.inventory_type
+                )
+            ret_dict['added'] = True
         else:
-            print("Your inventory is full.")
-            return False
+            ret_dict['message'] = "Your inventory is full."
+
+        return ret_dict
         
     def drop_item_by_name(self, item_name) -> Item:
         dropped_items = []
@@ -38,14 +48,17 @@ class Player:
                 dropped_items.append(item)
         return dropped_items
         
-    def print_inventory(self) -> None:
-        print("You are carrying:")
+    def get_inventory_string(self) -> None:
+        inv_str = ""
+        inv_str += "You are carrying:\n"
         for item in self.inventory:
-            print("    -", item.name)
-        print("{count} items / {capacity} capacity".format(
+            inv_str += ("    - " + item.name + "\n")
+        inv_str += "You have space for:\n"
+        inv_str += "{count} total items out of a capacity of {capacity}".format(
             count = len(self.inventory),
             capacity = self.inventory_capacity
-            ))
+            )
+        return inv_str
         
     def get_inventory_interaction_commands(self) -> list:
         interaction_types = ['drop', 'look']
@@ -63,3 +76,9 @@ class Player:
             if item_name == item.name:
                 item_list.append(item)
         return item_list
+    
+    def get_valid_commands(self):
+        valid_commands = ""
+        valid_commands += (", " + ", ".join(self.player_commands))
+        valid_commands += (", " + ", ".join(self.get_inventory_interaction_commands()))
+        return valid_commands

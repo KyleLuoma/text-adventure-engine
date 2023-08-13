@@ -12,14 +12,40 @@
                 "description": "You see a house."
             }
         ],
-        "items":[
-
+        "items":[],
+        "fixtures":[
+            {
+                "title": "poppies",
+                "interactions": [
+                    {
+                        "action": "smell",
+                        "description": "they smell like poppies."
+                    },
+                    {
+                        "action": "pick",
+                        "description": "you shouldn't do that."
+                    },
+                    {
+                        "action": "look",
+                        "description": "They are a striking red color."
+                    }
+                ]
+            },
+            {
+                "title": "house",
+                "interactions": [
+                    {
+                        "action": "look", 
+                        "description": "It looks like a small cottage. Perhaps you should walk closer to get a better look."
+                    }
+                ]
+            }
         ]
     },
     {
         "id": 2,
         "title": "A house",
-        "full_description": "You are standing outside of a small cottage.",
+        "full_description": "You are standing outside of a small cottage surrounded by a white picket fence. There is a gate on the fence that is hanging by one hinge.",
         "paths": [
             {
                 "goes_to": 1,
@@ -39,12 +65,31 @@
                 "item_type_id": 1,
                 "location": "on the stairs"
             }
+        ],
+        "fixtures":[
+            {
+                "title": "gate",
+                "interactions": [
+                    {
+                        "action": "close",
+                        "description": "Your attempt to close the gate fails as it appears the latch is also broken. The gate returns to its previous location and continues to sag pathetically by one hinge."
+                    },
+                    {
+                        "action": "look",
+                        "description": "It's an old gate. It looks like it was kicked in at some point which is probably why one of the hinges is broken."
+                    },
+                    {
+                        "action": "open",
+                        "description": "It was already kind of open. You can't really open it any more than it already is."
+                    }
+                ]
+            }
         ]
     },
     {
         "id": 3,
         "title": "The front porch of the cottage",
-        "full_description": "You are standing on the porch of the small cottage. You can see a faint glow through the crack in the door. You detect a faint smell of garlic",
+        "full_description": "You are standing on the porch of the small cottage. The cottage door is <F door>state</F>. You detect a faint smell of garlic coming from inside.",
         "paths": [
             {
                 "goes_to": 2,
@@ -53,8 +98,35 @@
                 "description": "you see a small yard immediately in front of the cottage."
             }
         ],
-        "items": [
-
+        "items": [],
+        "fixtures":[
+            {
+                "title": "door",
+                "states": [
+                    "open", "closed", "ajar"
+                ],
+                "state": "ajar",
+                "interactions": [
+                    {
+                        "action": "open",
+                        "descriptions": {
+                            "open": "The door is already open.",
+                            "closed": "You open the door, revealing a small cozy interior.",
+                            "ajar": "You push the door all the way open, revealing a small cozy interior"
+                        },
+                        "new_state": "open"
+                    },
+                    {
+                        "action": "close",
+                        "descriptions": {
+                            "open": "You close the door.",
+                            "closed": "The door is already closed.",
+                            "ajar": "You gently pull the half-open door closed."
+                        },
+                        "new_state": "closed"
+                    }
+                ]
+            }
         ]
     }
 ]

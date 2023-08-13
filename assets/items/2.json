@@ -1,0 +1,10 @@
+{
+    "type_id": 2,
+    "name": "poppy",
+    "description": "It is a lovely red poppy with an intoxicating aroma.",
+    "size": 1,
+    "weight": 1,
+    "actions": {
+        "smell": "it smells nice"
+    }
+}

@@ -27,7 +27,7 @@ class GPTInputTranslator(InputTranslator):
             valid_commands,
             scene_description
             )
-        print(prompt)
+        # print(prompt)
         response = self.openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
