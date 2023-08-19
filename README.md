@@ -7,3 +7,4 @@ The objective of this program is to provide a framework for creating text-based 
 4. Can play ambient music and sounds
 5. Perform standard text adventure functions such as navigation, inventory, etc.
 6. Can be multiplayer and interactive
+7. LLM AI-based NPCs
