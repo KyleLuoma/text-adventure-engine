@@ -40,12 +40,14 @@ class GPTConversationManager(ConversationManager):
             'content': prompt_template
         }]
 
-        completion = self.openai.ChatCompletion.create(
-            model="gpt-3.5-turbo", 
-            messages=messages,
-            stop=["\n"]
+        completion = self.openai.Completion.create(
+            model="davinci", 
+            prompt=prompt_template,
+            stop=[f"{player_name}:"],
+            max_tokens=256,
             )
-        return completion.choices[0].message.content
+            
+        return completion.choices[0]['text']
     
     
     def add_input_and_response_to_conversation_tuple_list(
